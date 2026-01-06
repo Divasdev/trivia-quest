@@ -1,0 +1,44 @@
+body{
+   background-color: antiquewhite;
+}
+
+
+.section-navbar{
+   display: flex;
+  
+   background-color: aquamarine;
+   gap: 500px;
+   justify-content: center;
+   align-items: center;
+
+
+}
+
+.nav-links{
+   display: flex;
+    gap: 20px;
+}
+
+.main-section{
+   background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    max-width:500px ;
+    margin: 160px auto;
+
+}
+.question-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.section-footer{
+   display: flex;
+   justify-content: center;
+}
+
+.big-container{
+   background-color: rgb(135, 137, 139);
+}
