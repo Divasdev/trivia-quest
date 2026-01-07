@@ -1,44 +1,117 @@
-body{
-   background-color: antiquewhite;
-}
-
-
-.section-navbar{
-   display: flex;
-  
-   background-color: aquamarine;
-   gap: 500px;
-   justify-content: center;
-   align-items: center;
-
-
-}
-
-.nav-links{
-   display: flex;
-    gap: 20px;
-}
-
-.main-section{
-   background-color: aqua;
+/* Add this to see the glass effect immediately! */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    max-width:500px ;
-    margin: 160px auto;
+}
+
+.big-container {
+    background: rgba(255, 255, 255, 0.1); /* Forces transparency */
+    backdrop-filter: blur(15px);
+}
+.nav-left-items {
+   display: flex;
+}
+
+
+.section-navbar {
+   display: flex;
+   background-color: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(10px);
+   border-radius: 20px;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px;
+   width: 100%;
+
 
 }
-.question-container{
+
+.nav-left-items {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.nav-links {
+   display: flex;
+   gap: 20px;
+}
+
+
+
+.main-section {
+
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: column;
+   max-width: 900px;
+
+   padding: 100px;
+
+
 }
-.section-footer{
+
+.question-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background: rgba(255, 255, 255, 0.05);
+   backdrop-filter: blur(15px);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   border-radius: 20px;
+   padding: 40px;
+   width: 100%;
+}
+
+.question-option {
+   display: flex;
+   justify-content: center;
+   align-content: center;
+   width: 100%;
+   padding: 15px 20px;
+   background-color: rgba(255, 255,255, 0.5);
+   color:white;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.questions-options-list{
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   width: 100%;
+}
+
+.section-footer {
    display: flex;
    justify-content: center;
 }
 
-.big-container{
-   background-color: rgb(135, 137, 139);
+.big-container {
+   border: 10px solid rgba(255, 255, 255, 0.2);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   max-width: 850px;
+   margin: 150px auto;
+   background-color: rgb(219, 222, 225);
+   box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.1),
+      0 15px 40px rgba(0, 0, 0, 0.08);
+   border-radius: 12px;
+   padding: 30px;
+}
+
+.profile-img {
+   border-radius: 40px;
+   margin-left: 20px;
+
 }
