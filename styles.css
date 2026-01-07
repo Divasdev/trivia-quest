@@ -1,117 +1,200 @@
-/* Add this to see the glass effect immediately! */
+/* 1. IMPORT MODERN FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white; /* Make all text white for the glass effect */
+}
+
+/* 2. BODY - The colorful background is key */
 body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* 3. BIG CONTAINER - Your main "Window" */
 .big-container {
-    background: rgba(255, 255, 255, 0.1); /* Forces transparency */
-    backdrop-filter: blur(15px);
-}
-.nav-left-items {
-   display: flex;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 95%; /* Responsive width */
+    margin: 40px auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    padding: 24px;
+    overflow: hidden;
+
+    /* This makes the top-left edge look like it's catching a light source */
+border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.05)) 1;
 }
 
-
+/* 4. NAVBAR - Layout and transparency */
 .section-navbar {
-   display: flex;
-   background-color: rgba(255, 255, 255, 0.1);
-   backdrop-filter: blur(10px);
-   border-radius: 20px;
-   border: 1px solid rgba(255, 255, 255, 0.2);
-   justify-content: space-between;
-   align-items: center;
-   padding: 20px;
-   width: 100%;
-
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    
+    /* The Glass Effect */
+    background: rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* SHARP EDGE: 1px is key. Higher transparency makes it look thinner */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 16px;
+    
+    /* This adds a "highlight" on the very top edge */
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2); 
 }
 
 .nav-left-items {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .nav-links {
-   display: flex;
-   gap: 20px;
+    display: flex;
+    gap: 25px;
 }
 
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
 
+.nav-link:hover {
+    opacity: 0.6; /* Simple, elegant hover effect */
+}
 
+/* 5. MAIN SECTION & QUESTION CARD */
 .main-section {
-
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   max-width: 900px;
-
-   padding: 100px;
-
-
+    width: 100%;
+    padding: 36px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
 }
 
 .question-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   background: rgba(255, 255, 255, 0.05);
-   backdrop-filter: blur(15px);
-   border: 1px solid rgba(255, 255, 255, 0.1);
-   border-radius: 20px;
-   padding: 40px;
-   width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* 6. OPTIONS LIST & BUTTONS */
+.questions-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 }
 
 .question-option {
-   display: flex;
-   justify-content: center;
-   align-content: center;
-   width: 100%;
-   padding: 15px 20px;
-   background-color: rgba(255, 255,255, 0.5);
-   color:white;
-   border-radius: 10px;
-   cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
 }
 
-.questions-options-list{
-   display: flex;
-   flex-direction: column;
-   gap: 15px;
-   width: 100%;
+.question-option:hover {
+    
+    transform: translateY(-2px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
+/* The Green Success Button (Applied via JS or specific class) */
+.correct-answer {
+    background: rgba(46, 204, 113, 0.4) !important;
+    border: 1px solid rgba(46, 204, 113, 0.6) !important;
+}
+
+/* 7. FOOTER */
 .section-footer {
-   display: flex;
-   justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 25px;
+    margin-top: auto; /* Pushes footer to the bottom of the container */
+
+    /* Glass matching the Navbar */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Sharp top separator */
+    border-radius: 16px; /* Matches the big-container bottom corners */
 }
 
-.big-container {
-   border: 10px solid rgba(255, 255, 255, 0.2);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   max-width: 850px;
-   margin: 150px auto;
-   background-color: rgb(219, 222, 225);
-   box-shadow:
-      0 4px 10px rgba(0, 0, 0, 0.1),
-      0 15px 40px rgba(0, 0, 0, 0.08);
-   border-radius: 12px;
-   padding: 30px;
+.footer-contains {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
+/* 8. PROFILE IMAGE */
 .profile-img {
-   border-radius: 40px;
-   margin-left: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
+}
 
+
+.big-container, .question-container {
+    /* 1. The main thin white border (The outer edge) */
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+
+    /* 2. The inner glow (Simulates light trapped inside the glass) */
+    box-shadow: 
+        inset 0 0 15px rgba(255, 255, 255, 0.1), /* Soft inner glow */
+        0 20px 40px rgba(0, 0, 0, 0.3);          /* Deep outer shadow for lift */
+    
+    /* 3. Increase blur for a more premium "frosted" look */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+.main-content-wrapper {
+   padding: 30px; /* Moves the padding from the container to the content */
+   flex-grow: 1; /* Pushes the footer to the very bottom */
+}
+
+.section-navbar,
+.main-section,
+.section-footer {
+    width: 100%;
 }
