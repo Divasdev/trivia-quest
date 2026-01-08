@@ -198,3 +198,50 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
 .section-footer {
     width: 100%;
 }
+
+
+
+.quiz-nav-buttons {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin-top: 30px;
+   gap: 20px;
+}
+
+.nav-btn {
+   flex: 1; /* Makes both buttons equal width */
+   padding: 12px 25px;
+   border-radius: 12px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   backdrop-filter: blur(10px);
+}
+
+/* Secondary/Previous - More transparent */
+.btn-secondary {
+   background: rgba(255, 255, 255, 0.05);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   color: rgba(255, 255, 255, 0.8);
+}
+
+/* Primary/Next - Brighter to stand out */
+.btn-primary {
+   background: rgba(255, 255, 255, 0.2);
+   border: 1px solid rgba(255, 255, 255, 0.4);
+   color: white;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover {
+   transform: translateY(-2px);
+   background: rgba(255, 255, 255, 0.25);
+}
+
+/* Disabled state for when you are on Question 1 */
+.nav-btn:disabled {
+   opacity: 0.3;
+   cursor: not-allowed;
+   transform: none;
+}
