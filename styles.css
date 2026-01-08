@@ -245,3 +245,22 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
    cursor: not-allowed;
    transform: none;
 }
+
+
+/* Sharp Glass Feedback Styles */
+
+/* Green Glow for Correct Answer */
+.correct {
+    background: rgba(46, 213, 115, 0.3) !important; /* Semi-transparent green */
+    border: 2px solid rgba(46, 213, 115, 0.7) !important; /* Sharper green edge */
+    box-shadow: 0 0 15px rgba(46, 213, 115, 0.2); /* Soft green outer glow */
+    color: white !important;
+}
+
+/* Red Glow for Wrong Answer */
+.wrong {
+    background: rgba(255, 71, 87, 0.3) !important; /* Semi-transparent red */
+    border: 2px solid rgba(255, 71, 87, 0.7) !important; /* Sharper red edge */
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.2); /* Soft red outer glow */
+    color: white !important;
+}
