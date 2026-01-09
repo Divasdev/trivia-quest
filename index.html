@@ -25,6 +25,11 @@
                <img src="profile-svgrepo-com.svg" alt="User Profile" class="profile-img" width="50px">
             </div>
          </div>
+
+         <div class="score-box">
+            <span class="score-label">Score:</span>
+            <span id="current-score">0</span>
+         </div>
          <!--NAV-RIGHT-->
          <div class="nav-links">
             <a href="#" class="nav-link active-link">Home</a>
@@ -39,7 +44,7 @@
          <div class="question-container">
             <div class="question-header">
 
-               <p class="header-line">Question 3 of 10</p>
+               <p class="header-line" id="js-header-line"></p>
                <div class="progress-bar-container">
                   <div class="progress-bar-fill" style="width: 30%;"></div>
                </div>
@@ -47,21 +52,21 @@
 
             <div class="questions-content">
                <h3 class="question">
-                  What does HTML stand for?
+                  
                </h3>
 
                <div class="questions-options-list">
                   <button class="question-option">
-                     What does ASAL stand for
+                   
                   </button>
                   <button class="question-option selected-correct">
-                     What does HTML stand for
+                    
                   </button>
                   <button class="question-option">
-                     What does AKI stand for
+                     
                   </button>
                   <button class="question-option">
-                     What does HTML stand for
+                    
                   </button>
                </div>
 
@@ -69,8 +74,17 @@
                   <button id="prev-btn" class="nav-btn btn-secondary">Previous</button>
                   <button id="next-btn" class="nav-btn btn-primary">Next</button>
                </div>
+
+
+
+            </div>
+
+            <div id="result-container">
+               
             </div>
          </div>
+
+
       </main>
 
 

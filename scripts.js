@@ -51,6 +51,7 @@ function shuffleCrypto(array) {
    return array;
 }
 
+
 const displayOptions = document.querySelectorAll(".question-option");
 
 displayOptions.forEach((button) => {
@@ -64,83 +65,87 @@ displayOptions.forEach((button) => {
    // 3. Clear the background color if you set it manually
    button.style.backgroundColor = ""; 
 });
-function showQuestions() {
 
+
+
+
+function showQuestions() {
    if (!questionsData || questionsData.length === 0) return;
 
-   const questions = questionsData[currentQuestionsIndex];
-   if (!questions) return;
-   questions = questionsData[currentQuestionsIndex];
-   console.log(questions);
+  
+   const currentData = questionsData[currentQuestionsIndex];
+   if (!currentData) return;
 
-
-   indexedquestion = questions.question
-   indexedCorrectAnswer= questions.correct_answer;
-   indexedIncorrectAnswer = questions.incorrect_answers;
-
-   options = [indexedCorrectAnswer,
-      ...indexedIncorrectAnswer];
-   console.log(options);
-
-   randomOptions = shuffleCrypto(options)
-   console.log(randomOptions);
-
+   
    const displayOptions = document.querySelectorAll(".question-option");
-   displayOptions.forEach((button, index) => {
-
-      button.innerHTML = randomOptions[index];
-
-
+   displayOptions.forEach((button) => {
+      button.classList.remove("correct", "wrong");
+      button.style.pointerEvents = "auto";
+      button.style.opacity = "1";
+      button.style.backgroundColor = ""; 
    });
 
-   const displayQuestion = document.querySelector(".question");
-
-   displayQuestion.innerHTML = indexedquestion;
-
-   const  optionList = document.querySelector(".questions-options-list");
    
-   optionList.addEventListener("click",(event)=>{
-      if(!event.target.classList.contains("question-option")) return;
+   const allOptions = [currentData.correct_answer, ...currentData.incorrect_answers];
+   const randomOptions = shuffleCrypto(allOptions);
 
-
-      const clickedButton=event.target;
-      const selectedAnswer=clickedButton.innerText;
-
-      console.log("clicked:",selectedAnswer);
-
-      if(selectedAnswer===indexedCorrectAnswer){
-          clickedButton.classList.add("correct");
-      } else{
-        clickedButton.classList.add("wrong");
-      }
-
-
-      // 3. Prevent further clicks
-    const allOptions = document.querySelectorAll(".question-option");
-    allOptions.forEach(btn => {
-        btn.style.pointerEvents = "none"; // Disables clicking
-        btn.style.opacity = "0.7";        // Makes them look 'locked'
-    });
-    
-    // Highlight the clicked button back to full opacity
-    clickedButton.style.opacity = "1";
-});
-   
   
+   const displayQuestion = document.querySelector(".question");
+   displayQuestion.innerHTML = currentData.question;
+
+   displayOptions.forEach((button, index) => {
+      button.innerHTML = randomOptions[index];
+   });
 
 
-
+   const quesNO=document.getElementById("js-header-line");
+    quesNO.innerHTML=`Questions ${currentQuestionsIndex +1 }  of  ${questionsData.length}`;
 }
+
+
+const optionList = document.querySelector(".questions-options-list");
+
+optionList.addEventListener("click", (event) => {
+
+   if (!event.target.classList.contains("question-option")) return;
+
+   const clickedButton = event.target;
+   const selectedAnswer = clickedButton.innerText;
+   const correctAnswer = questionsData[currentQuestionsIndex].correct_answer;
+   const currentScore=document.getElementById("current-score");
+   if (selectedAnswer === correctAnswer) {
+      clickedButton.classList.add("correct");
+      currentScore.innerHTML= currentQuestionsIndex;
+   } else {
+      clickedButton.classList.add("wrong");
+   }
+
+  
+   const allOptions = document.querySelectorAll(".question-option");
+   allOptions.forEach(btn => {
+      btn.style.pointerEvents = "none";
+      if (btn !== clickedButton) btn.style.opacity = "0.5";
+   });
+});
+
+
+
+
+
+
+
    const nextBtn = document.getElementById("next-btn");
    const prevBtn = document.getElementById("prev-btn");
-
-   nextBtn.addEventListener('click', () => {
   
+   nextBtn.addEventListener('click', () => {
+   
    if (currentQuestionsIndex < questionsData.length - 1) {
        currentQuestionsIndex++;
        showQuestions();
+
+     
    } else {
-       console.log("Quiz Finished!");
+       alert("Quiz Finished!");
        // Maybe show a "Final Score" screen here? 🏁
    }
 });

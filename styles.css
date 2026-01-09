@@ -264,3 +264,29 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
     box-shadow: 0 0 15px rgba(255, 71, 87, 0.2); /* Soft red outer glow */
     color: white !important;
 }
+
+
+.score-box {
+   background: rgba(255, 255, 255, 0.1);
+   padding: 8px 16px;
+   border-radius: 12px;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   font-weight: 600;
+   display: flex;
+   gap: 8px;
+   align-items: center;
+   /* This makes the score "glow" slightly */
+   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.score-label {
+   font-size: 0.8rem;
+   text-transform: uppercase;
+   opacity: 0.7;
+   letter-spacing: 1px;
+}
+
+#current-score {
+   font-size: 1.2rem;
+   color: #fff;
+}
