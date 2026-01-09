@@ -41,45 +41,41 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
 /* 4. NAVBAR - Layout and transparency */
 .section-navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* This stacks Logo Row over the Status Row */
     align-items: center;
-    padding: 12px 24px;
+    padding: 16px;
     width: 100%;
+    gap: 12px; /* Space between logo and the items below */
     
-    /* The Glass Effect */
     background: rgba(255, 255, 255, 0.08); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    /* SHARP EDGE: 1px is key. Higher transparency makes it look thinner */
     border: 1px solid rgba(255, 255, 255, 0.3); 
-    border-radius: 16px;
-    
-    /* This adds a "highlight" on the very top edge */
+    border-radius: 20px;
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2); 
 }
 
-.nav-left-items {
+/* Row 1: Logo centered on its own */
+.nav-top-row {
+    width: 100%;
     display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+/* Row 2: Score on the left, Hamburger on the right */
+.nav-bottom-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
+/* Ensure the links stay HIDDEN in the main navbar and only live in the Hamburger */
+.section-navbar > .nav-links {
+    display: none;
 }
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.2s;
-}
-
-.nav-link:hover {
-    opacity: 0.6; /* Simple, elegant hover effect */
-}
-
 /* 5. MAIN SECTION & QUESTION CARD */
 .main-section {
     width: 100%;
@@ -490,3 +486,25 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
         border: none;
     }
 }
+
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bar {
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* X Animation when active */
+.menu-toggle.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
