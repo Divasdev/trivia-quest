@@ -14,38 +14,32 @@
 
    <section class="big-container app-state state-playing">
 
-      <nav class="section-navbar">
-         <!--NAV-LEFT-->
+   <nav class="glass-bar section-navbar">
+   <div class="nav-top-row">
+      <span class="navLogo">TriviaQuest</span>
+   </div>
+   
+   <div class="nav-bottom-row">
+      <div class="score-box">
+         <span class="score-label">SCORE:</span>
+         <span id="current-score">0</span>
+      </div>
 
-         <div class="nav-left-items">
-            <div class="logo-icon-container">
+      <div class="menu-toggle" id="mobile-menu">
+         <span class="bar"></span>
+         <span class="bar"></span>
+         <span class="bar"></span>
+      </div>
+   </div>
 
-               <a class="logo-name">TriviaQuest</a>
-            </div>
-            <div class="profile-image-container">
-               <img src="profile-svgrepo-com.svg" alt="User Profile" class="profile-img" width="50px">
-            </div>
-         </div>
-
-         <div class="score-box">
-            <span class="score-label">Score:</span>
-            <span id="current-score">0</span>
-         </div>
-
-
-         <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-         </div>
-         <!--NAV-RIGHT-->
-         <div class="nav-links">
-            <a href="#" class="nav-link active-link">Home</a>
-            <a href="#" class="nav-link">Topics</a>
-            <a href="#" class="nav-link">LeaderBoard</a>
-         </div>
-      </nav>
-
+   <div class="nav-overlay" id="nav-overlay">
+      <ul class="nav-links">
+         <li><a href="#" class="nav-link">Home</a></li>
+         <li><a href="#" class="nav-link">Topics</a></li>
+         <li><a href="#" class="nav-link">LeaderBoard</a></li>
+      </ul>
+   </div>
+</nav>
 
 
       <main class="main-section quiz-state state-question">
