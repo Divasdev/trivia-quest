@@ -1,5 +1,6 @@
 let questionsData = [];
 let currentQuestionsIndex = 0;
+let score = 0; // FIXED: Defined global score variable
 
 async function fetchQuestions() {
    try {
@@ -40,7 +41,6 @@ async function fetchQuestions() {
 
 fetchQuestions();
 
-
 function shuffleCrypto(array) {
    for (let i = array.length - 1; i > 0; i--) {
       const randomBuffer = new Uint32Array(1);
@@ -51,32 +51,12 @@ function shuffleCrypto(array) {
    return array;
 }
 
-
-const displayOptions = document.querySelectorAll(".question-option");
-
-displayOptions.forEach((button) => {
-   // 1. Remove the feedback classes
-   button.classList.remove("correct", "wrong");
-
-   // 2. Re-enable clicking (important since we disabled it!)
-   button.style.pointerEvents = "auto";
-   button.style.opacity = "1";
-   
-   // 3. Clear the background color if you set it manually
-   button.style.backgroundColor = ""; 
-});
-
-
-
-
 function showQuestions() {
    if (!questionsData || questionsData.length === 0) return;
 
-  
    const currentData = questionsData[currentQuestionsIndex];
    if (!currentData) return;
 
-   
    const displayOptions = document.querySelectorAll(".question-option");
    displayOptions.forEach((button) => {
       button.classList.remove("correct", "wrong");
@@ -85,11 +65,9 @@ function showQuestions() {
       button.style.backgroundColor = ""; 
    });
 
-   
    const allOptions = [currentData.correct_answer, ...currentData.incorrect_answers];
    const randomOptions = shuffleCrypto(allOptions);
 
-  
    const displayQuestion = document.querySelector(".question");
    displayQuestion.innerHTML = currentData.question;
 
@@ -97,30 +75,29 @@ function showQuestions() {
       button.innerHTML = randomOptions[index];
    });
 
-
-   const quesNO=document.getElementById("js-header-line");
-    quesNO.innerHTML=`Questions ${currentQuestionsIndex +1 }  of  ${questionsData.length}`;
+   const quesNO = document.getElementById("js-header-line");
+   quesNO.innerHTML = `Questions ${currentQuestionsIndex + 1} of ${questionsData.length}`;
 }
-
 
 const optionList = document.querySelector(".questions-options-list");
 
 optionList.addEventListener("click", (event) => {
-
    if (!event.target.classList.contains("question-option")) return;
 
    const clickedButton = event.target;
    const selectedAnswer = clickedButton.innerText;
    const correctAnswer = questionsData[currentQuestionsIndex].correct_answer;
-   const currentScore=document.getElementById("current-score");
+   const currentScoreUI = document.getElementById("current-score");
+
    if (selectedAnswer === correctAnswer) {
       clickedButton.classList.add("correct");
-      currentScore.innerHTML= currentQuestionsIndex;
+      // FIXED: Increment the actual score and update UI
+      score++; 
+      currentScoreUI.innerHTML = score; 
    } else {
       clickedButton.classList.add("wrong");
    }
 
-  
    const allOptions = document.querySelectorAll(".question-option");
    allOptions.forEach(btn => {
       btn.style.pointerEvents = "none";
@@ -128,41 +105,45 @@ optionList.addEventListener("click", (event) => {
    });
 });
 
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
 
-
-
-
-
-
-   const nextBtn = document.getElementById("next-btn");
-   const prevBtn = document.getElementById("prev-btn");
-  
-   nextBtn.addEventListener('click', () => {
-   
+nextBtn.addEventListener('click', () => {
    if (currentQuestionsIndex < questionsData.length - 1) {
        currentQuestionsIndex++;
        showQuestions();
-
-     
    } else {
-       alert("Quiz Finished!");
-       // Maybe show a "Final Score" screen here? 🏁
+      showResults();
    }
 });
 
-   prevBtn.addEventListener('click',()=>{
-      if (currentQuestionsIndex >0){
-          currentQuestionsIndex--;
+prevBtn.addEventListener('click', () => {
+   if (currentQuestionsIndex > 0) {
+      currentQuestionsIndex--;
       showQuestions();
-      }
-     
-   })
+   }
+});
 
-   
+function showResults() {
+    const resultContainer = document.getElementById("result-container");
+    const finalScoreDisplay = document.getElementById("final-score");
+    const questionContainer = document.querySelector(".question-container"); 
+    const feedback = document.getElementById("feedback-msg");
+    
+    // Calculate performance message
+    const percentage = (score / questionsData.length) * 100;
+    if (percentage >= 80) feedback.innerText = "Exceptional Accuracy!";
+    else if (percentage >= 50) feedback.innerText = "Solid Performance.";
+    else feedback.innerText = "Data incomplete. Try again.";
 
-
-
-
-
-
-
+    // 3. 3D Receding Effect
+   if(questionContainer) {
+        // This pushes the background back in 3D space
+        questionContainer.style.transform = "perspective(1000px) translateZ(-150px) rotateX(2deg)";
+        questionContainer.style.filter = "brightness(0.3) blur(4px)";
+        questionContainer.style.transition = "all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)";
+    }
+  
+    finalScoreDisplay.innerText = `${score}/${questionsData.length}`;
+    resultContainer.style.display = "flex"; 
+}

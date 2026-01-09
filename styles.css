@@ -1,6 +1,6 @@
 /* 1. IMPORT MODERN FONT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -289,4 +289,66 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
 #current-score {
    font-size: 1.2rem;
    color: #fff;
+}
+
+
+/* Update your existing #result-container and .result-card with this */
+
+/* 1. The Overlay: Deepening the background for contrast */
+#result-container {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75); /* Darker to make the glass card 'pop' */
+    backdrop-filter: blur(25px) saturate(160%); /* Heavier blur for depth */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: 24px;
+}
+
+/* 2. The Card: Adding 'Specular' lighting */
+.result-card {
+    background: rgba(255, 255, 255, 0.05);
+    /* THE KEY: Lighter top and left borders simulate a light source */
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    
+    padding: 3.5rem 2rem;
+    border-radius: 35px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    color: white;
+    
+    /* Deep shadow with a subtle glow color */
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 
+                0 0 30px rgba(46, 213, 115, 0.05);
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. The Score Circle: Making it look like an instrument dial */
+.score-circle {
+    width: 130px;
+    height: 130px;
+    margin: 1.5rem auto;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 80%);
+}
+
+#final-score {
+    font-size: 3.8rem;
+    font-weight: 800;
+    /* Formula 1 style high-contrast gradient */
+    background: linear-gradient(135deg, #ffffff 40%, #2ed573 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

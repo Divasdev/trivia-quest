@@ -41,7 +41,7 @@
 
 
       <main class="main-section quiz-state state-question">
-         <div class="question-container">
+         <div class="question-container" id="quizContainer">
             <div class="question-header">
 
                <p class="header-line" id="js-header-line"></p>
@@ -52,21 +52,21 @@
 
             <div class="questions-content">
                <h3 class="question">
-                  
+
                </h3>
 
                <div class="questions-options-list">
                   <button class="question-option">
-                   
+
                   </button>
                   <button class="question-option selected-correct">
-                    
+
                   </button>
                   <button class="question-option">
-                     
+
                   </button>
                   <button class="question-option">
-                    
+
                   </button>
                </div>
 
@@ -79,10 +79,27 @@
 
             </div>
 
-            <div id="result-container">
-               
-            </div>
+          
          </div>
+
+           <div id="result-container">
+               <div class="result-card">
+                  <span class="performance-badge">Performance Report</span>
+                  <h2>Quiz Completed</h2>
+
+                  <div class="score-circle">
+                     <h1 id="final-score">0/12</h1>
+                  </div>
+
+                  <p id="feedback-msg">Engineering logic: Optimized.</p>
+
+                  <div class="result-actions">
+                     <button id="restart-btn" class="nav-btn btn-primary" onclick="location.reload()">
+                        Restart Session
+                     </button>
+                  </div>
+               </div>
+            </div>
 
 
       </main>
