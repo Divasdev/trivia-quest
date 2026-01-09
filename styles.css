@@ -352,3 +352,65 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+    .big-container {
+        padding: 10px; /* Less padding on small screens */
+        width: 95%;
+    }
+
+    .section-navbar {
+        padding: 10px 15px;
+        flex-direction: column; /* Stack logo and nav links if they don't fit */
+        gap: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .question-container {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .question {
+        font-size: 1.2rem; /* Shrink question text so it doesn't overflow */
+    }
+
+    .score-box {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #final-score {
+        font-size: 3rem; /* Make the big score readable on phones */
+    }
+
+    .result-card {
+        padding: 2rem 1rem;
+        width: 95%;
+    }
+
+    .question-option {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Stack the Prev/Next buttons vertically if they overlap */
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #next-btn, #prev-btn {
+        width: 100%; /* Full width buttons are easier to tap on mobile */
+    }
+}
