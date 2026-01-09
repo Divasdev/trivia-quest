@@ -414,3 +414,79 @@ border-image: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.
         width: 100%; /* Full width buttons are easier to tap on mobile */
     }
 }
+
+.question-option {
+    touch-action: manipulation; /* Prevents double-tap to zoom */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Removes the blue box on tap */
+}
+
+
+/* --- Hamburger Icon Styling --- */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001; /* Higher than the result-container */
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* --- Mobile Overlay --- */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 70%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px) saturate(150%);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    z-index: 1000;
+}
+
+.nav-overlay.active {
+    right: 0; /* Slide in */
+}
+
+.nav-overlay .nav-links {
+    flex-direction: column;
+    list-style: none;
+    gap: 40px;
+}
+
+/* --- Animation for the 'X' Icon --- */
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Only show hamburger on smaller screens */
+@media (min-width: 769px) {
+    .menu-toggle { display: none; }
+    .nav-overlay { 
+        position: static; 
+        width: auto; 
+        height: auto; 
+        background: none; 
+        backdrop-filter: none; 
+        border: none;
+    }
+}

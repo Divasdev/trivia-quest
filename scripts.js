@@ -147,3 +147,22 @@ function showResults() {
     finalScoreDisplay.innerText = `${score}/${questionsData.length}`;
     resultContainer.style.display = "flex"; 
 }
+
+
+
+
+const menuToggle = document.getElementById('mobile-menu');
+const navOverlay = document.getElementById('nav-overlay');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    
+    // Optional: Blur the main container when menu is open
+    const bigContainer = document.querySelector('.big-container');
+    if (navOverlay.classList.contains('active')) {
+        bigContainer.style.filter = "brightness(0.5)";
+    } else {
+        bigContainer.style.filter = "none";
+    }
+});

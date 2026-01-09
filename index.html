@@ -4,6 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
    <title>TriviaQuest</title>
    <link rel="stylesheet" href="styles.css">
 </head>
@@ -29,6 +30,13 @@
          <div class="score-box">
             <span class="score-label">Score:</span>
             <span id="current-score">0</span>
+         </div>
+
+
+         <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
          </div>
          <!--NAV-RIGHT-->
          <div class="nav-links">
@@ -79,27 +87,27 @@
 
             </div>
 
-          
+
          </div>
 
-           <div id="result-container">
-               <div class="result-card">
-                  <span class="performance-badge">Performance Report</span>
-                  <h2>Quiz Completed</h2>
+         <div id="result-container">
+            <div class="result-card">
+               <span class="performance-badge">Performance Report</span>
+               <h2>Quiz Completed</h2>
 
-                  <div class="score-circle">
-                     <h1 id="final-score">0/12</h1>
-                  </div>
+               <div class="score-circle">
+                  <h1 id="final-score">0/12</h1>
+               </div>
 
-                  <p id="feedback-msg">Engineering logic: Optimized.</p>
+               <p id="feedback-msg">Engineering logic: Optimized.</p>
 
-                  <div class="result-actions">
-                     <button id="restart-btn" class="nav-btn btn-primary" onclick="location.reload()">
-                        Restart Session
-                     </button>
-                  </div>
+               <div class="result-actions">
+                  <button id="restart-btn" class="nav-btn btn-primary" onclick="location.reload()">
+                     Restart Session
+                  </button>
                </div>
             </div>
+         </div>
 
 
       </main>
